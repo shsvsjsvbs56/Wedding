@@ -74,42 +74,38 @@
             color: var(--primary);
         }
 
-        /* 3. 首頁全螢幕封面背景 */
+        /* 3 & 9. 首頁全螢幕封面背景 (使用 contain 確保電腦與手機皆能看見全貌，不被裁切) */
         .hero {
             height: 100vh;
+            background-color: #2b2b2b; /* 照片以外的留白處以高質感深色襯托 */
             background-image: url('https://i.postimg.cc/5tSJr5Bk/b21c4f3e-b8e8-4700-9b5a-0518c88605ce.png');
-            background-size: cover;
-            background-position: center 20%; 
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center; 
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-end;
+            padding-bottom: 50px;
             position: relative;
-        }
-        
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.2);
-            z-index: 1;
         }
 
         .hero-content {
             z-index: 2;
             text-align: center;
             color: #fff;
-            text-shadow: 0 2px 15px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 25px;
+            border-radius: 8px;
+            backdrop-filter: blur(4px);
         }
 
         .hero h1 {
-            font-size: 4.5rem;
+            font-size: 3rem;
             font-weight: 500;
-            letter-spacing: 6px;
-            margin-bottom: 15px;
+            letter-spacing: 4px;
+            margin-bottom: 5px;
         }
 
         /* 區塊共用排版 */
@@ -286,6 +282,7 @@
             margin-bottom: 28px;
         }
 
+        /* 4. 中英雙語標籤 */
         label {
             display: block;
             margin-bottom: 10px;
@@ -345,6 +342,7 @@
             background-color: #c29363;
         }
 
+        /* 8. 智能表單邏輯隱藏區塊 */
         #conditional-fields {
             display: none;
             animation: fadeIn 0.4s ease-in-out;
@@ -355,8 +353,9 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* 手機版優化 */
         @media (max-width: 600px) {
-            .hero h1 { font-size: 3.2rem; }
+            .hero h1 { font-size: 2.5rem; }
             .time-card { min-width: 115px; padding: 15px; gap: 12px; }
             .time-num { font-size: 2rem; }
             .time-divider { height: 35px; }
@@ -368,19 +367,22 @@
 </head>
 <body>
 
+    <!-- 1. 頂端固定毛玻璃導航列 -->
     <nav>
         <a href="#about">關於我們</a>
         <a href="#details">婚禮詳情</a>
         <a href="#rsvp">出席回函</a>
     </nav>
 
+    <!-- 3 & 9. 首頁封面 (contain 完整呈現全貌) -->
     <header class="hero">
         <div class="hero-content">
             <h1>Tina & Ian</h1>
-            <p class="en-text" style="font-size: 1.3rem; letter-spacing: 5px;">SAVE THE DATE</p>
+            <p class="en-text" style="font-size: 1.1rem; letter-spacing: 4px;">SAVE THE DATE</p>
         </div>
     </header>
 
+    <!-- 關於我們 & 倒數計時 -->
     <section id="about">
         <h2 class="section-title en-text">About Us</h2>
         <div class="slogan-text">
@@ -394,6 +396,7 @@
             期待與您相見 ❤
         </div>
 
+        <!-- 2. 微光卡片倒數計時器 -->
         <div class="countdown-container" id="countdown">
             <div class="time-card">
                 <div class="time-num" id="cd-days">00</div>
@@ -413,9 +416,11 @@
         </div>
     </section>
 
+    <!-- 婚禮詳情 -->
     <section id="details">
         <h2 class="section-title en-text">Wedding Details</h2>
         
+        <!-- 3. 垂直 V-Card 設計 -->
         <div class="v-card">
             <h3>2026 . 10 . 10</h3>
             <p>星期六 Saturday</p>
@@ -434,9 +439,11 @@
             </div>
         </div>
 
+        <!-- 7. 交通指引 (Accordion 摺疊式面板) -->
         <details class="accordion">
             <summary>交通指引 <span class="en-label en-text" style="color:var(--secondary); font-size:0.85rem; margin-left:8px;">TRANSPORTATION</span></summary>
             <div class="accordion-content">
+                <!-- 6. 關鍵地點使用 no-wrap 防跑版 -->
                 <p><strong>🚄 捷運：</strong>請搭乘至 <span class="no-wrap">【捷運劍南路站】</span>，步行約 10 分鐘即可抵達 <span class="no-wrap">台北萬豪酒店</span>。</p>
                 <br>
                 <p><strong>🚗 自行開車：</strong>導航請設定 <span class="no-wrap">【台北市中山區樂群二路199號】</span>，飯店備有專屬地下停車場，賓客可享免費停車。</p>
@@ -444,15 +451,17 @@
         </details>
     </section>
 
+    <!-- 出席回函 -->
     <section id="rsvp">
         <h2 class="section-title" style="font-family: 'Noto Serif TC', serif;">出席回函</h2>
         
-        <!-- 正式恢復隱藏式無跳轉提交技術 -->
+        <!-- 5. 隱藏式 Iframe 提交技術 (無跳轉) -->
         <script type="text/javascript">
             var submitted = false;
         </script>
         <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { alert('表單已成功送出！非常感謝您的回覆，期待與您相見 ❤'); window.location.reload(); }"></iframe>
 
+        <!-- 確保輸入框絕對淨空，無預填字眼 -->
         <form action="https://docs.google.com/forms/d/e/1FAIpQLSdaAXdx9O1peatc6yibY0t0uYOHiMuURjJXBrTu1j_HSEkQ1A/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;">
             
             <div class="form-group">
@@ -497,6 +506,7 @@
                 </select>
             </div>
 
+            <!-- 8. 智能表單邏輯：參加人數不為 0 時顯示 -->
             <div id="conditional-fields">
                 <div class="form-group">
                     <label>素食需求人數 <span class="en-label">VEGETARIAN</span></label>
@@ -514,8 +524,7 @@
                     <label>是否需要兒童椅 <span class="en-label">BABY CHAIR</span></label>
                     <select name="entry.1724093413">
                         <option value="" disabled selected>請選擇需要數量</option>
-                        <!-- 🎯 完全精準對齊您的截圖：不需要，0張（全形逗號、無空白） -->
-                        <option value="不需要，0張">不需要，0張</option>
+                        <option value="0張">0張</option>
                         <option value="1張">1張</option>
                         <option value="2張">2張</option>
                         <option value="3張">3張</option>
@@ -551,7 +560,9 @@
         </form>
     </section>
 
+    <!-- 功能腳本 -->
     <script>
+        // --- 倒數計時器邏輯 (設定至 2026-10-10 11:30:00) ---
         const weddingDate = new Date("October 10, 2026 11:30:00").getTime();
 
         const timer = setInterval(function() {
@@ -575,11 +586,13 @@
             document.getElementById("cd-mins").innerText = minutes.toString().padStart(2, '0');
         }, 1000);
 
+        // --- 智能表單邏輯 ---
         const guestSelect = document.getElementById("guest-count");
         const conditionalFields = document.getElementById("conditional-fields");
 
         guestSelect.addEventListener("change", function() {
             const value = this.value;
+            // 只要不是選擇 "0位"，就顯示飲食需求與兒童椅區塊
             if (value !== "0位" && value !== "") {
                 conditionalFields.style.display = "block";
             } else {
