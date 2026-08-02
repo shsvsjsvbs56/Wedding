@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
-        /* 1. 色彩與字體設定 (Morandi 暖陽色系) */
+        /* 色彩與字體設定 (Morandi 暖陽色系) */
         :root {
             --primary: #d4a373;   /* 暖陽色 */
             --secondary: #8da399; /* 灰綠色 */
@@ -39,7 +39,7 @@
             font-family: 'Cormorant Garamond', serif;
         }
 
-        /* 6. 防斷行保護類別 (極重要) */
+        /* 防斷行保護類別 (極重要) */
         .no-wrap {
             white-space: nowrap !important;
             display: inline-block;
@@ -94,7 +94,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.2); /* 增強對比讓文字更清晰 */
+            background: rgba(0, 0, 0, 0.2);
             z-index: 1;
         }
 
@@ -148,7 +148,7 @@
             background: #ffffff;
             border-radius: 16px;
             padding: 20px 25px;
-            /* 微光效果與柔和陰影 */
+            /* 柔和陰影與白色微光 */
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 10px 35px rgba(0, 0, 0, 0.06); 
             display: flex;
             align-items: center;
@@ -208,10 +208,6 @@
             font-size: 2.2rem;
             margin-bottom: 5px;
             letter-spacing: 3px;
-        }
-
-        .v-card p {
-            letter-spacing: 1.5px;
         }
         
         .venue-info {
@@ -309,7 +305,7 @@
             letter-spacing: 1.5px;
         }
 
-        input[type="text"], select {
+        input[type="text"], input[type="email"], select, textarea {
             width: 100%;
             padding: 14px 18px;
             border: 1px solid #e8e8e8;
@@ -322,7 +318,12 @@
             -webkit-appearance: none;
         }
 
-        input[type="text"]:focus, select:focus {
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(212, 163, 115, 0.15);
@@ -378,7 +379,7 @@
         <a href="#rsvp">出席回函</a>
     </nav>
 
-    <!-- 3. 首頁全螢幕封面背景 -->
+    <!-- 首頁全螢幕封面背景 -->
     <header class="hero">
         <div class="hero-content">
             <h1>Tina & Ian</h1>
@@ -465,27 +466,49 @@
         </script>
         <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { alert('表單已成功送出！非常感謝您的回覆，期待與您相見 ❤'); window.location.reload(); }"></iframe>
 
-        <!-- 提取指定 URL，絕對淨空無預填文字 -->
+        <!-- 已套用真實表單網址與所有擷取的 ID，絕對淨空無預填文字 -->
         <form action="https://docs.google.com/forms/d/e/1FAIpQLSdaAXdx9O1peatc6yibY0t0uYOHiMuURjJXBrTu1j_HSEkQ1A/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;">
             
             <div class="form-group">
-                <!-- 4. 中英雙語標籤 -->
                 <label>姓名 <span class="en-label">NAME</span></label>
-                <!-- ⚠️ 請將 name="entry.name_id_here" 替換為您表單真實的 姓名 ID -->
-                <input type="text" name="entry.name_id_here" required placeholder="請輸入您的全名">
+                <input type="text" name="entry.1611071481" required placeholder="請填寫您的全名">
+            </div>
+
+            <div class="form-group">
+                <label>與新人的關係 <span class="en-label">RELATIONSHIP</span></label>
+                <select name="entry.672222163" required>
+                    <option value="" disabled selected>請選擇關係</option>
+                    <option value="Tina的親友">女方 Tina 的親友</option>
+                    <option value="Ian的親友">男方 Ian 的親友</option>
+                    <option value="共同親友">共同親友</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>聯絡電話 <span class="en-label">PHONE</span></label>
+                <input type="text" name="entry.355254881" required placeholder="請填寫聯絡電話">
+            </div>
+
+            <div class="form-group">
+                <label>是否出席 <span class="en-label">ATTENDANCE</span></label>
+                <select name="entry.2106864529" required>
+                    <option value="" disabled selected>請選擇出席意願</option>
+                    <option value="當然，一定到">當然，一定出席</option>
+                    <option value="抱歉，無法出席">抱歉，無法出席 (獻上祝福)</option>
+                </select>
             </div>
 
             <div class="form-group">
                 <label>參加午宴人數 <span class="en-label">GUESTS</span></label>
-                <!-- ⚠️ 請將 name="entry.guests_id_here" 替換為您表單真實的 人數 ID -->
-                <select name="entry.guests_id_here" id="guest-count" required>
-                    <!-- 下拉選單純中文 -->
+                <!-- 負責觸發智能邏輯的選單 (entry.1171390249) -->
+                <select name="entry.1171390249" id="guest-count" required>
                     <option value="" disabled selected>請選擇出席人數</option>
-                    <option value="0">0 (無法出席，獻上祝福)</option>
-                    <option value="1">1 人出席</option>
-                    <option value="2">2 人出席</option>
-                    <option value="3">3 人出席</option>
-                    <option value="4">4 人出席</option>
+                    <option value="0">0 (無法出席)</option>
+                    <option value="1位">1 位</option>
+                    <option value="2位">2 位</option>
+                    <option value="3位">3 位</option>
+                    <option value="4位">4 位</option>
+                    <option value="5位以上">5 位以上</option>
                 </select>
             </div>
 
@@ -493,25 +516,43 @@
             <div id="conditional-fields">
                 <div class="form-group">
                     <label>飲食需求 <span class="en-label">DIETARY NEEDS</span></label>
-                    <!-- ⚠️ 替換為飲食需求 ID -->
-                    <select name="entry.diet_id_here">
-                        <option value="無特殊需求" selected>無特殊需求</option>
-                        <option value="全素">全素</option>
-                        <option value="蛋奶素">蛋奶素</option>
-                        <option value="不吃牛">不吃牛</option>
-                        <option value="不吃海鮮">不吃海鮮</option>
-                    </select>
+                    <input type="text" name="entry.1724093413" placeholder="例如：2位葷食，1位素食 (若無請填無)">
                 </div>
 
                 <div class="form-group">
                     <label>是否需要兒童椅 <span class="en-label">BABY CHAIR</span></label>
-                    <!-- ⚠️ 替換為兒童椅 ID -->
-                    <select name="entry.baby_id_here">
-                        <option value="不需要" selected>不需要</option>
-                        <option value="需要 1 張">需要 1 張</option>
-                        <option value="需要 2 張">需要 2 張</option>
+                    <select name="entry.1022193426">
+                        <option value="" disabled selected>請選擇是否需要</option>
+                        <option value="不需要">不需要</option>
+                        <option value="1">需要 1 張</option>
+                        <option value="2">需要 2 張</option>
+                        <option value="3">需要 3 張</option>
                     </select>
                 </div>
+            </div>
+
+            <div class="form-group">
+                <label>喜帖需求 <span class="en-label">INVITATION</span></label>
+                <select name="entry.1117753855" required>
+                    <option value="" disabled selected>請選擇喜帖形式</option>
+                    <option value="需要，請寄紙本喜帖給我">需要紙本喜帖</option>
+                    <option value="不需要紙本，電子喜帖即可">電子喜帖即可</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>電子信箱 <span class="en-label">EMAIL</span></label>
+                <input type="email" name="entry.1432072211" placeholder="請填寫 Email (寄送電子喜帖或通知用)">
+            </div>
+
+            <div class="form-group">
+                <label>郵寄地址 <span class="en-label">ADDRESS</span></label>
+                <input type="text" name="entry.197849660" placeholder="請填寫含郵遞區號的完整地址">
+            </div>
+
+            <div class="form-group">
+                <label>給新人的祝福或備註 <span class="en-label">BLESSING & NOTES</span></label>
+                <textarea name="entry.1906745692" placeholder="有什麼想對我們說的話，或是其他需要協助的地方嗎？"></textarea>
             </div>
 
             <button type="submit">送出回函 <span style="font-family:'Cormorant Garamond', serif; font-size: 0.9em; margin-left: 8px; letter-spacing: 2px;">SUBMIT</span></button>
@@ -520,14 +561,13 @@
 
     <!-- 功能腳本 -->
     <script>
-        // --- 倒數計時器邏輯 (精準設定至 2026-10-10 11:30:00) ---
+        // --- 倒數計時器邏輯 (設定至 2026-10-10 11:30:00) ---
         const weddingDate = new Date("October 10, 2026 11:30:00").getTime();
 
         const timer = setInterval(function() {
             const now = new Date().getTime();
             const distance = weddingDate - now;
 
-            // 若時間已到達或超過
             if (distance < 0) {
                 clearInterval(timer);
                 document.getElementById("cd-days").innerText = "00";
@@ -536,12 +576,10 @@
                 return;
             }
 
-            // 計算天、小時、分鐘
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 
-            // 格式化為兩位數並寫入 DOM
             document.getElementById("cd-days").innerText = days.toString().padStart(2, '0');
             document.getElementById("cd-hours").innerText = hours.toString().padStart(2, '0');
             document.getElementById("cd-mins").innerText = minutes.toString().padStart(2, '0');
@@ -552,9 +590,9 @@
         const conditionalFields = document.getElementById("conditional-fields");
 
         guestSelect.addEventListener("change", function() {
-            const value = parseInt(this.value, 10);
-            // 選擇人數大於 0 時展開進階選項
-            if (value > 0) {
+            const value = this.value;
+            // 只要不是選擇 "0"，就顯示飲食需求與兒童椅區塊
+            if (value !== "0" && value !== "") {
                 conditionalFields.style.display = "block";
             } else {
                 conditionalFields.style.display = "none";
