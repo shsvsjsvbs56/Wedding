@@ -79,7 +79,8 @@
             height: 100vh;
             background-image: url('https://i.postimg.cc/5tSJr5Bk/b21c4f3e-b8e8-4700-9b5a-0518c88605ce.png');
             background-size: cover;
-            background-position: center;
+            /* 👇 解決電腦版切頭問題的關鍵設定 👇 */
+            background-position: center 20%; 
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -466,16 +467,18 @@
         </script>
         <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { alert('表單已成功送出！非常感謝您的回覆，期待與您相見 ❤'); window.location.reload(); }"></iframe>
 
-        <!-- 已套用真實表單網址與所有擷取的 ID，絕對淨空無預填文字 -->
+        <!-- 已經確保使用您最新的表單網址與最新提取的欄位 ID -->
         <form action="https://docs.google.com/forms/d/e/1FAIpQLSdaAXdx9O1peatc6yibY0t0uYOHiMuURjJXBrTu1j_HSEkQ1A/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;">
             
             <div class="form-group">
                 <label>姓名 <span class="en-label">NAME</span></label>
+                <!-- 對應您的最新 ID: 1611071481 -->
                 <input type="text" name="entry.1611071481" required placeholder="請填寫您的全名">
             </div>
 
             <div class="form-group">
                 <label>與新人的關係 <span class="en-label">RELATIONSHIP</span></label>
+                <!-- 對應您的最新 ID: 672222163 -->
                 <select name="entry.672222163" required>
                     <option value="" disabled selected>請選擇關係</option>
                     <option value="Tina的親友">女方 Tina 的親友</option>
@@ -486,11 +489,13 @@
 
             <div class="form-group">
                 <label>聯絡電話 <span class="en-label">PHONE</span></label>
+                <!-- 對應您的最新 ID: 355254881 -->
                 <input type="text" name="entry.355254881" required placeholder="請填寫聯絡電話">
             </div>
 
             <div class="form-group">
                 <label>是否出席 <span class="en-label">ATTENDANCE</span></label>
+                <!-- 對應您的最新 ID: 2106864529 -->
                 <select name="entry.2106864529" required>
                     <option value="" disabled selected>請選擇出席意願</option>
                     <option value="當然，一定到">當然，一定出席</option>
@@ -500,7 +505,7 @@
 
             <div class="form-group">
                 <label>參加午宴人數 <span class="en-label">GUESTS</span></label>
-                <!-- 負責觸發智能邏輯的選單 (entry.1171390249) -->
+                <!-- 對應您的最新 ID: 1171390249 -->
                 <select name="entry.1171390249" id="guest-count" required>
                     <option value="" disabled selected>請選擇出席人數</option>
                     <option value="0">0 (無法出席)</option>
@@ -512,15 +517,17 @@
                 </select>
             </div>
 
-            <!-- 8. 智能表單邏輯：參加人數 > 0 才會顯示此區塊 -->
+            <!-- 8. 智能表單邏輯：參加人數不為 0 時顯示 -->
             <div id="conditional-fields">
                 <div class="form-group">
                     <label>飲食需求 <span class="en-label">DIETARY NEEDS</span></label>
+                    <!-- 對應您的最新 ID: 1724093413 -->
                     <input type="text" name="entry.1724093413" placeholder="例如：2位葷食，1位素食 (若無請填無)">
                 </div>
 
                 <div class="form-group">
                     <label>是否需要兒童椅 <span class="en-label">BABY CHAIR</span></label>
+                    <!-- 對應您的最新 ID: 1022193426 -->
                     <select name="entry.1022193426">
                         <option value="" disabled selected>請選擇是否需要</option>
                         <option value="不需要">不需要</option>
@@ -533,6 +540,7 @@
 
             <div class="form-group">
                 <label>喜帖需求 <span class="en-label">INVITATION</span></label>
+                <!-- 對應您的最新 ID: 1117753855 -->
                 <select name="entry.1117753855" required>
                     <option value="" disabled selected>請選擇喜帖形式</option>
                     <option value="需要，請寄紙本喜帖給我">需要紙本喜帖</option>
@@ -542,16 +550,19 @@
 
             <div class="form-group">
                 <label>電子信箱 <span class="en-label">EMAIL</span></label>
+                <!-- 對應您的最新 ID: 1432072211 -->
                 <input type="email" name="entry.1432072211" placeholder="請填寫 Email (寄送電子喜帖或通知用)">
             </div>
 
             <div class="form-group">
                 <label>郵寄地址 <span class="en-label">ADDRESS</span></label>
+                <!-- 對應您的最新 ID: 197849660 -->
                 <input type="text" name="entry.197849660" placeholder="請填寫含郵遞區號的完整地址">
             </div>
 
             <div class="form-group">
                 <label>給新人的祝福或備註 <span class="en-label">BLESSING & NOTES</span></label>
+                <!-- 對應您的最新 ID: 1906745692 -->
                 <textarea name="entry.1906745692" placeholder="有什麼想對我們說的話，或是其他需要協助的地方嗎？"></textarea>
             </div>
 
