@@ -447,13 +447,8 @@
     <section id="rsvp">
         <h2 class="section-title" style="font-family: 'Noto Serif TC', serif;">出席回函</h2>
         
-        <!-- 💡 正式恢復隱藏式無跳轉提交 -->
-        <script type="text/javascript">
-            var submitted = false;
-        </script>
-        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { alert('表單已成功送出！非常感謝您的回覆，期待與您相見 ❤'); window.location.reload(); }"></iframe>
-
-        <form action="https://docs.google.com/forms/d/e/1FAIpQLSdaAXdx9O1peatc6yibY0t0uYOHiMuURjJXBrTu1j_HSEkQ1A/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;">
+        <!-- 🚨 已重新開啟偵錯模式 target="_blank" -->
+        <form action="https://docs.google.com/forms/d/e/1FAIpQLSdaAXdx9O1peatc6yibY0t0uYOHiMuURjJXBrTu1j_HSEkQ1A/formResponse" method="post" target="_blank">
             
             <div class="form-group">
                 <label>姓名 <span class="en-label">NAME</span></label>
@@ -464,7 +459,6 @@
                 <label>與新人的關係 <span class="en-label">RELATIONSHIP</span></label>
                 <select name="entry.672222163" required>
                     <option value="" disabled selected>請選擇關係</option>
-                    <!-- ✅ 根據圖片精準修正 -->
                     <option value="女方Tina的親友">女方 Tina 的親友</option>
                     <option value="男方Ian的親友">男方 Ian 的親友</option>
                     <option value="共同親友">共同親友</option>
@@ -515,7 +509,6 @@
                     <label>是否需要兒童椅 <span class="en-label">BABY CHAIR</span></label>
                     <select name="entry.1724093413">
                         <option value="" disabled selected>請選擇需要數量</option>
-                        <!-- ✅ 根據圖片精準修正 -->
                         <option value="不需要, 0張">不需要, 0張</option>
                         <option value="1張">1 張</option>
                         <option value="2張">2 張</option>
@@ -548,7 +541,7 @@
                 <textarea name="entry.1906745692" placeholder="有什麼想對我們說的話，或是其他需要協助的地方嗎？"></textarea>
             </div>
 
-            <button type="submit">送出回函 <span style="font-family:'Cormorant Garamond', serif; font-size: 0.9em; margin-left: 8px; letter-spacing: 2px;">SUBMIT</span></button>
+            <button type="submit">送出進行測試 <span style="font-family:'Cormorant Garamond', serif; font-size: 0.9em; margin-left: 8px; letter-spacing: 2px;">DEBUG</span></button>
         </form>
     </section>
 
