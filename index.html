@@ -79,7 +79,7 @@
             height: 100vh;
             background-image: url('https://i.postimg.cc/5tSJr5Bk/b21c4f3e-b8e8-4700-9b5a-0518c88605ce.png');
             background-size: cover;
-            background-position: center 20%; /* 電腦版防切頭設定 */
+            background-position: center 20%; 
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -447,14 +447,13 @@
     <section id="rsvp">
         <h2 class="section-title" style="font-family: 'Noto Serif TC', serif;">出席回函</h2>
         
-        <!-- iframe 已隱藏，暫時不啟用，直到您測試沒紅字為止 -->
+        <!-- 💡 正式恢復隱藏式無跳轉提交 -->
         <script type="text/javascript">
             var submitted = false;
         </script>
         <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { alert('表單已成功送出！非常感謝您的回覆，期待與您相見 ❤'); window.location.reload(); }"></iframe>
 
-        <!-- 🚨 注意這裡！目前設定為 target="_blank"，測試成功後請改回 target="hidden_iframe" -->
-        <form action="https://docs.google.com/forms/d/e/1FAIpQLSdaAXdx9O1peatc6yibY0t0uYOHiMuURjJXBrTu1j_HSEkQ1A/formResponse" method="post" target="_blank">
+        <form action="https://docs.google.com/forms/d/e/1FAIpQLSdaAXdx9O1peatc6yibY0t0uYOHiMuURjJXBrTu1j_HSEkQ1A/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;">
             
             <div class="form-group">
                 <label>姓名 <span class="en-label">NAME</span></label>
@@ -465,8 +464,8 @@
                 <label>與新人的關係 <span class="en-label">RELATIONSHIP</span></label>
                 <select name="entry.672222163" required>
                     <option value="" disabled selected>請選擇關係</option>
-                    <!-- 💡 已修正：移除「女方」兩個字，完全貼合您最初的網址字串 -->
-                    <option value="Tina的親友">女方 Tina 的親友</option>
+                    <!-- ✅ 根據圖片精準修正 -->
+                    <option value="女方Tina的親友">女方 Tina 的親友</option>
                     <option value="男方Ian的親友">男方 Ian 的親友</option>
                     <option value="共同親友">共同親友</option>
                 </select>
@@ -482,7 +481,6 @@
                 <select name="entry.2106864529" required>
                     <option value="" disabled selected>請選擇出席意願</option>
                     <option value="當然，一定到">當然，一定到</option>
-                    <!-- ⚠️ 警告：這行是我猜的，如果有紅字代表表單選項不是這樣寫 -->
                     <option value="抱歉，無法出席">抱歉，無法出席</option>
                 </select>
             </div>
@@ -491,7 +489,6 @@
                 <label>參加午宴人數 <span class="en-label">GUESTS</span></label>
                 <select name="entry.1171390249" id="guest-count" required>
                     <option value="" disabled selected>請選擇出席人數</option>
-                    <!-- ⚠️ 警告：這行是我猜的，如果有紅字代表表單選項不是這樣寫 -->
                     <option value="0位">0位 (無法出席)</option>
                     <option value="1位">1位</option>
                     <option value="2位">2位</option>
@@ -506,7 +503,6 @@
                     <label>素食需求人數 <span class="en-label">VEGETARIAN</span></label>
                     <select name="entry.1022193426">
                         <option value="" disabled selected>請選擇素食人數</option>
-                        <!-- ⚠️ 警告：這行是我猜的，如果有紅字代表表單選項不是這樣寫 -->
                         <option value="0人">0 人</option>
                         <option value="1人">1 人</option>
                         <option value="2人">2 人</option>
@@ -519,8 +515,8 @@
                     <label>是否需要兒童椅 <span class="en-label">BABY CHAIR</span></label>
                     <select name="entry.1724093413">
                         <option value="" disabled selected>請選擇需要數量</option>
-                        <!-- ⚠️ 警告：這行是我猜的，如果有紅字代表表單選項不是這樣寫 -->
-                        <option value="0張">不需要 (0張)</option>
+                        <!-- ✅ 根據圖片精準修正 -->
+                        <option value="不需要, 0張">不需要, 0張</option>
                         <option value="1張">1 張</option>
                         <option value="2張">2 張</option>
                         <option value="3張">3 張</option>
@@ -533,7 +529,6 @@
                 <select name="entry.1117753855" required>
                     <option value="" disabled selected>請選擇喜帖形式</option>
                     <option value="需要，請寄紙本喜帖給我">需要，請寄紙本喜帖給我</option>
-                    <!-- ⚠️ 警告：這行是我猜的，如果有紅字代表表單選項不是這樣寫 -->
                     <option value="不需要紙本，電子喜帖即可">不需要紙本，電子喜帖即可</option>
                 </select>
             </div>
@@ -553,7 +548,7 @@
                 <textarea name="entry.1906745692" placeholder="有什麼想對我們說的話，或是其他需要協助的地方嗎？"></textarea>
             </div>
 
-            <button type="submit">送出進行測試 <span style="font-family:'Cormorant Garamond', serif; font-size: 0.9em; margin-left: 8px; letter-spacing: 2px;">DEBUG</span></button>
+            <button type="submit">送出回函 <span style="font-family:'Cormorant Garamond', serif; font-size: 0.9em; margin-left: 8px; letter-spacing: 2px;">SUBMIT</span></button>
         </form>
     </section>
 
@@ -586,7 +581,6 @@
 
         guestSelect.addEventListener("change", function() {
             const value = this.value;
-            // 只要不是選擇 "0位"，就顯示飲食需求與兒童椅區塊
             if (value !== "0位" && value !== "") {
                 conditionalFields.style.display = "block";
             } else {
