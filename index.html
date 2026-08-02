@@ -79,7 +79,7 @@
             height: 100vh;
             background-image: url('https://i.postimg.cc/5tSJr5Bk/b21c4f3e-b8e8-4700-9b5a-0518c88605ce.png');
             background-size: cover;
-            /* 電腦版切頭問題的關鍵設定 */
+            /* 解決電腦版切頭問題的關鍵設定 */
             background-position: center 20%; 
             display: flex;
             flex-direction: column;
@@ -466,7 +466,7 @@
         </script>
         <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { alert('表單已成功送出！非常感謝您的回覆，期待與您相見 ❤'); window.location.reload(); }"></iframe>
 
-        <!-- 確保使用最新 URL 且輸入框完全淨空，無 AAAA -->
+        <!-- 確保使用最新 URL，完全淨空，無 AAAA -->
         <form action="https://docs.google.com/forms/d/e/1FAIpQLSdaAXdx9O1peatc6yibY0t0uYOHiMuURjJXBrTu1j_HSEkQ1A/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;">
             
             <div class="form-group">
@@ -476,10 +476,11 @@
 
             <div class="form-group">
                 <label>與新人的關係 <span class="en-label">RELATIONSHIP</span></label>
+                <!-- 精準匹配：男方Ian的親友、女方Tina的親友 -->
                 <select name="entry.672222163" required>
                     <option value="" disabled selected>請選擇關係</option>
-                    <option value="Tina的親友">女方 Tina 的親友</option>
-                    <option value="Ian的親友">男方 Ian 的親友</option>
+                    <option value="女方Tina的親友">女方 Tina 的親友</option>
+                    <option value="男方Ian的親友">男方 Ian 的親友</option>
                     <option value="共同親友">共同親友</option>
                 </select>
             </div>
@@ -491,6 +492,7 @@
 
             <div class="form-group">
                 <label>是否出席 <span class="en-label">ATTENDANCE</span></label>
+                <!-- 精準匹配：當然，一定到 -->
                 <select name="entry.2106864529" required>
                     <option value="" disabled selected>請選擇出席意願</option>
                     <option value="當然，一定到">當然，一定到</option>
@@ -500,7 +502,7 @@
 
             <div class="form-group">
                 <label>參加午宴人數 <span class="en-label">GUESTS</span></label>
-                <!-- 對應您的最新 ID: 1171390249 -->
+                <!-- 精準匹配：0位, 1位, 2位... -->
                 <select name="entry.1171390249" id="guest-count" required>
                     <option value="" disabled selected>請選擇出席人數</option>
                     <option value="0位">0位 (無法出席)</option>
@@ -516,24 +518,26 @@
             <div id="conditional-fields">
                 <div class="form-group">
                     <label>素食需求人數 <span class="en-label">VEGETARIAN</span></label>
+                    <!-- 精準匹配：0人, 1人, 2人... -->
                     <select name="entry.1022193426">
                         <option value="" disabled selected>請選擇素食人數</option>
-                        <option value="0">0 人</option>
-                        <option value="1">1 人</option>
-                        <option value="2">2 人</option>
-                        <option value="3">3 人</option>
-                        <option value="4">4 人</option>
+                        <option value="0人">0 人</option>
+                        <option value="1人">1 人</option>
+                        <option value="2人">2 人</option>
+                        <option value="3人">3 人</option>
+                        <option value="4人">4 人</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label>是否需要兒童椅 <span class="en-label">BABY CHAIR</span></label>
+                    <!-- 精準匹配：0張, 1張, 2張... -->
                     <select name="entry.1724093413">
                         <option value="" disabled selected>請選擇需要數量</option>
-                        <option value="0">不需要 (0張)</option>
-                        <option value="1">1 張</option>
-                        <option value="2">2 張</option>
-                        <option value="3">3 張</option>
+                        <option value="0張">不需要 (0張)</option>
+                        <option value="1張">1 張</option>
+                        <option value="2張">2 張</option>
+                        <option value="3張">3 張</option>
                     </select>
                 </div>
             </div>
