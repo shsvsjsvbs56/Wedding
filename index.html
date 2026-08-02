@@ -39,13 +39,13 @@
             font-family: 'Cormorant Garamond', serif;
         }
 
-        /* 防斷行保護類別 (極重要) */
+        /* 防斷行保護類別 */
         .no-wrap {
             white-space: nowrap !important;
             display: inline-block;
         }
 
-        /* 1. 頂部毛玻璃導航列 */
+        /* 頂部毛玻璃導航列 */
         nav {
             position: fixed;
             top: 0;
@@ -74,12 +74,12 @@
             color: var(--primary);
         }
 
-        /* 3. 首頁全螢幕封面背景 */
+        /* 首頁全螢幕封面背景 */
         .hero {
             height: 100vh;
             background-image: url('https://i.postimg.cc/5tSJr5Bk/b21c4f3e-b8e8-4700-9b5a-0518c88605ce.png');
             background-size: cover;
-            /* 👇 解決電腦版切頭問題的關鍵設定 👇 */
+            /* 解決電腦版切頭問題的關鍵設定 */
             background-position: center 20%; 
             display: flex;
             flex-direction: column;
@@ -136,7 +136,7 @@
             line-height: 2.2;
         }
 
-        /* 2. 計時器視覺 (白色微光卡片) */
+        /* 計時器視覺 (白色微光卡片) */
         .countdown-container {
             display: flex;
             justify-content: center;
@@ -149,7 +149,6 @@
             background: #ffffff;
             border-radius: 16px;
             padding: 20px 25px;
-            /* 柔和陰影與白色微光 */
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 10px 35px rgba(0, 0, 0, 0.06); 
             display: flex;
             align-items: center;
@@ -170,7 +169,7 @@
             width: 1px;
             height: 45px;
             background-color: var(--secondary);
-            opacity: 0.35; /* 優雅垂直細線 */
+            opacity: 0.35;
         }
 
         .time-unit {
@@ -181,7 +180,7 @@
             letter-spacing: 2px;
         }
 
-        /* 3. 垂直 V-Card 設計 */
+        /* 垂直 V-Card 設計 */
         .v-card {
             background: #fff;
             border: 1px solid rgba(212, 163, 115, 0.25);
@@ -227,7 +226,7 @@
             letter-spacing: 1px;
         }
 
-        /* 7. 交通指引 - 摺疊式面板 (Accordion) */
+        /* 交通指引 - 摺疊式面板 (Accordion) */
         details.accordion {
             background: #fff;
             border-radius: 12px;
@@ -288,7 +287,6 @@
             margin-bottom: 28px;
         }
 
-        /* 4. 中英雙語標籤 */
         label {
             display: block;
             margin-bottom: 10px;
@@ -348,7 +346,7 @@
             background-color: #c29363;
         }
 
-        /* 8. 智能表單邏輯隱藏區塊 */
+        /* 智能表單邏輯隱藏區塊 */
         #conditional-fields {
             display: none;
             animation: fadeIn 0.4s ease-in-out;
@@ -359,7 +357,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* 手機版優化 */
         @media (max-width: 600px) {
             .hero h1 { font-size: 3.2rem; }
             .time-card { min-width: 115px; padding: 15px; gap: 12px; }
@@ -373,7 +370,7 @@
 </head>
 <body>
 
-    <!-- 1. 頂端固定毛玻璃導航列 -->
+    <!-- 頂端固定毛玻璃導航列 -->
     <nav>
         <a href="#about">關於我們</a>
         <a href="#details">婚禮詳情</a>
@@ -402,7 +399,6 @@
             期待與您相見 ❤
         </div>
 
-        <!-- 2. 微光卡片倒數計時器 -->
         <div class="countdown-container" id="countdown">
             <div class="time-card">
                 <div class="time-num" id="cd-days">00</div>
@@ -426,7 +422,6 @@
     <section id="details">
         <h2 class="section-title en-text">Wedding Details</h2>
         
-        <!-- 3. 垂直 V-Card 設計 -->
         <div class="v-card">
             <h3>2026 . 10 . 10</h3>
             <p>星期六 Saturday</p>
@@ -445,11 +440,9 @@
             </div>
         </div>
 
-        <!-- 7. 交通指引 (Accordion 摺疊式面板) -->
         <details class="accordion">
             <summary>交通指引 <span class="en-label en-text" style="color:var(--secondary); font-size:0.85rem; margin-left:8px;">TRANSPORTATION</span></summary>
             <div class="accordion-content">
-                <!-- 6. 關鍵地點使用 no-wrap 防跑版 -->
                 <p><strong>🚄 捷運：</strong>請搭乘至 <span class="no-wrap">【捷運劍南路站】</span>，步行約 10 分鐘即可抵達 <span class="no-wrap">台北萬豪酒店</span>。</p>
                 <br>
                 <p><strong>🚗 自行開車：</strong>導航請設定 <span class="no-wrap">【台北市中山區樂群二路199號】</span>，飯店備有專屬地下停車場，賓客可享免費停車。</p>
@@ -461,24 +454,21 @@
     <section id="rsvp">
         <h2 class="section-title en-text">RSVP</h2>
         
-        <!-- 5. 隱藏式 Iframe 提交技術 (無跳轉) -->
-        <script type="text/javascript">
-            var submitted = false;
-        </script>
-        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { alert('表單已成功送出！非常感謝您的回覆，期待與您相見 ❤'); window.location.reload(); }"></iframe>
-
-        <!-- 已經確保使用您最新的表單網址與最新提取的欄位 ID -->
-        <form action="https://docs.google.com/forms/d/e/1FAIpQLSdaAXdx9O1peatc6yibY0t0uYOHiMuURjJXBrTu1j_HSEkQ1A/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;">
+        <!-- 
+            【偵錯模式啟用】
+            把原本的隱藏式 iframe 提交拿掉，改為 target="_blank"。
+            這樣點擊送出後，會強迫開啟 Google 表單的原始網頁，
+            您就能清楚看到紅字錯誤是寫在哪一個欄位了！
+        -->
+        <form action="https://docs.google.com/forms/d/e/1FAIpQLSdaAXdx9O1peatc6yibY0t0uYOHiMuURjJXBrTu1j_HSEkQ1A/formResponse" method="post" target="_blank">
             
             <div class="form-group">
                 <label>姓名 <span class="en-label">NAME</span></label>
-                <!-- 對應您的最新 ID: 1611071481 -->
                 <input type="text" name="entry.1611071481" required placeholder="請填寫您的全名">
             </div>
 
             <div class="form-group">
                 <label>與新人的關係 <span class="en-label">RELATIONSHIP</span></label>
-                <!-- 對應您的最新 ID: 672222163 -->
                 <select name="entry.672222163" required>
                     <option value="" disabled selected>請選擇關係</option>
                     <option value="Tina的親友">女方 Tina 的親友</option>
@@ -489,13 +479,11 @@
 
             <div class="form-group">
                 <label>聯絡電話 <span class="en-label">PHONE</span></label>
-                <!-- 對應您的最新 ID: 355254881 -->
                 <input type="text" name="entry.355254881" required placeholder="請填寫聯絡電話">
             </div>
 
             <div class="form-group">
                 <label>是否出席 <span class="en-label">ATTENDANCE</span></label>
-                <!-- 對應您的最新 ID: 2106864529 -->
                 <select name="entry.2106864529" required>
                     <option value="" disabled selected>請選擇出席意願</option>
                     <option value="當然，一定到">當然，一定出席</option>
@@ -505,9 +493,9 @@
 
             <div class="form-group">
                 <label>參加午宴人數 <span class="en-label">GUESTS</span></label>
-                <!-- 對應您的最新 ID: 1171390249 -->
                 <select name="entry.1171390249" id="guest-count" required>
                     <option value="" disabled selected>請選擇出席人數</option>
+                    <!-- 這裡可能是錯的，請留意 Google 表單上的選項是不是叫 0 或 0位 -->
                     <option value="0">0 (無法出席)</option>
                     <option value="1位">1 位</option>
                     <option value="2位">2 位</option>
@@ -517,17 +505,15 @@
                 </select>
             </div>
 
-            <!-- 8. 智能表單邏輯：參加人數不為 0 時顯示 -->
+            <!-- 智能表單邏輯隱藏區塊 -->
             <div id="conditional-fields">
                 <div class="form-group">
                     <label>飲食需求 <span class="en-label">DIETARY NEEDS</span></label>
-                    <!-- 對應您的最新 ID: 1724093413 -->
                     <input type="text" name="entry.1724093413" placeholder="例如：2位葷食，1位素食 (若無請填無)">
                 </div>
 
                 <div class="form-group">
                     <label>是否需要兒童椅 <span class="en-label">BABY CHAIR</span></label>
-                    <!-- 對應您的最新 ID: 1022193426 -->
                     <select name="entry.1022193426">
                         <option value="" disabled selected>請選擇是否需要</option>
                         <option value="不需要">不需要</option>
@@ -540,7 +526,6 @@
 
             <div class="form-group">
                 <label>喜帖需求 <span class="en-label">INVITATION</span></label>
-                <!-- 對應您的最新 ID: 1117753855 -->
                 <select name="entry.1117753855" required>
                     <option value="" disabled selected>請選擇喜帖形式</option>
                     <option value="需要，請寄紙本喜帖給我">需要紙本喜帖</option>
@@ -550,29 +535,24 @@
 
             <div class="form-group">
                 <label>電子信箱 <span class="en-label">EMAIL</span></label>
-                <!-- 對應您的最新 ID: 1432072211 -->
                 <input type="email" name="entry.1432072211" placeholder="請填寫 Email (寄送電子喜帖或通知用)">
             </div>
 
             <div class="form-group">
                 <label>郵寄地址 <span class="en-label">ADDRESS</span></label>
-                <!-- 對應您的最新 ID: 197849660 -->
                 <input type="text" name="entry.197849660" placeholder="請填寫含郵遞區號的完整地址">
             </div>
 
             <div class="form-group">
                 <label>給新人的祝福或備註 <span class="en-label">BLESSING & NOTES</span></label>
-                <!-- 對應您的最新 ID: 1906745692 -->
                 <textarea name="entry.1906745692" placeholder="有什麼想對我們說的話，或是其他需要協助的地方嗎？"></textarea>
             </div>
 
-            <button type="submit">送出回函 <span style="font-family:'Cormorant Garamond', serif; font-size: 0.9em; margin-left: 8px; letter-spacing: 2px;">SUBMIT</span></button>
+            <button type="submit">送出進行測試 <span style="font-family:'Cormorant Garamond', serif; font-size: 0.9em; margin-left: 8px; letter-spacing: 2px;">DEBUG</span></button>
         </form>
     </section>
 
-    <!-- 功能腳本 -->
     <script>
-        // --- 倒數計時器邏輯 (設定至 2026-10-10 11:30:00) ---
         const weddingDate = new Date("October 10, 2026 11:30:00").getTime();
 
         const timer = setInterval(function() {
@@ -596,14 +576,14 @@
             document.getElementById("cd-mins").innerText = minutes.toString().padStart(2, '0');
         }, 1000);
 
-        // --- 智能表單邏輯 ---
         const guestSelect = document.getElementById("guest-count");
         const conditionalFields = document.getElementById("conditional-fields");
 
         guestSelect.addEventListener("change", function() {
             const value = this.value;
             // 只要不是選擇 "0"，就顯示飲食需求與兒童椅區塊
-            if (value !== "0" && value !== "") {
+            // 如果您的表單 "0人" 選項叫做 "0位"，這裡的判斷也需要跟著改
+            if (value !== "0" && value !== "0位" && value !== "") {
                 conditionalFields.style.display = "block";
             } else {
                 conditionalFields.style.display = "none";
