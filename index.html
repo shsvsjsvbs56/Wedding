@@ -437,7 +437,7 @@
         <details class="accordion">
             <summary>交通指引 <span class="en-label en-text" style="color:var(--secondary); font-size:0.85rem; margin-left:8px;">TRANSPORTATION</span></summary>
             <div class="accordion-content">
-                <p><strong>🚄 捷運：</strong>請搭乘至 <span class="no-wrap">【捷運劍路站】</span>，步行約 10 分鐘即可抵達 <span class="no-wrap">台北萬豪酒店</span>。</p>
+                <p><strong>🚄 捷運：</strong>請搭乘至 <span class="no-wrap">【捷運劍南路站】</span>，步行約 10 分鐘即可抵達 <span class="no-wrap">台北萬豪酒店</span>。</p>
                 <br>
                 <p><strong>🚗 自行開車：</strong>導航請設定 <span class="no-wrap">【台北市中山區樂群二路199號】</span>，飯店備有專屬地下停車場，賓客可享免費停車。</p>
             </div>
@@ -447,14 +447,8 @@
     <section id="rsvp">
         <h2 class="section-title" style="font-family: 'Noto Serif TC', serif;">出席回函</h2>
         
-        <!-- 🎉 恢復無跳轉隱藏提交技術！ -->
-        <script type="text/javascript">
-            var submitted = false;
-        </script>
-        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { alert('表單已成功送出！非常感謝您的回覆，期待與您相見 ❤'); window.location.reload(); }"></iframe>
-
-        <!-- action 已經掛載回 iframe，點擊後不會跳轉了 -->
-        <form action="https://docs.google.com/forms/d/e/1FAIpQLSdaAXdx9O1peatc6yibY0t0uYOHiMuURjJXBrTu1j_HSEkQ1A/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;">
+        <!-- 🚨 維持偵錯模式確認最後成功 -->
+        <form action="https://docs.google.com/forms/d/e/1FAIpQLSdaAXdx9O1peatc6yibY0t0uYOHiMuURjJXBrTu1j_HSEkQ1A/formResponse" method="post" target="_blank">
             
             <div class="form-group">
                 <label>姓名 <span class="en-label">NAME</span></label>
@@ -515,8 +509,8 @@
                     <label>是否需要兒童椅 <span class="en-label">BABY CHAIR</span></label>
                     <select name="entry.1724093413">
                         <option value="" disabled selected>請選擇需要數量</option>
-                        <!-- 🎯 根據圖片精準修正：去除多餘的半形空白，完美對齊！ -->
-                        <option value="不需要, 0張">不需要, 0張</option>
+                        <!-- 🎯 終極修正：將半形逗號改為「全形逗號（，）」 -->
+                        <option value="不需要，0張">不需要，0張</option>
                         <option value="1張">1張</option>
                         <option value="2張">2張</option>
                         <option value="3張">3張</option>
@@ -548,7 +542,7 @@
                 <textarea name="entry.1906745692" placeholder="有什麼想對我們說的話，或是其他需要協助的地方嗎？"></textarea>
             </div>
 
-            <button type="submit">送出回函 <span style="font-family:'Cormorant Garamond', serif; font-size: 0.9em; margin-left: 8px; letter-spacing: 2px;">SUBMIT</span></button>
+            <button type="submit">送出進行測試 <span style="font-family:'Cormorant Garamond', serif; font-size: 0.9em; margin-left: 8px; letter-spacing: 2px;">DEBUG</span></button>
         </form>
     </section>
 
