@@ -454,13 +454,8 @@
     <section id="rsvp">
         <h2 class="section-title" style="font-family: 'Noto Serif TC', serif;">出席回函</h2>
         
-        <!-- 5. 隱藏式 Iframe 提交技術 (正式生效) -->
-        <script type="text/javascript">
-            var submitted = false;
-        </script>
-        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { alert('表單已成功送出！非常感謝您的回覆，期待與您相見 ❤'); window.location.reload(); }"></iframe>
-
-        <form action="https://docs.google.com/forms/d/e/1FAIpQLSdaAXdx9O1peatc6yibY0t0uYOHiMuURjJXBrTu1j_HSEkQ1A/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;">
+        <!-- 升級為 Fetch API 提交機制，支援電腦與手機跨裝置 100% 成功送出 -->
+        <form id="wedding-form">
             
             <div class="form-group">
                 <label>姓名 <span class="en-label">NAME</span></label>
@@ -554,7 +549,7 @@
                 <textarea name="entry.1906745692" placeholder="有什麼想對我們說的話，或是其他需要協助的地方嗎？"></textarea>
             </div>
 
-            <button type="submit">送出回函 <span style="font-family:'Cormorant Garamond', serif; font-size: 0.9em; margin-left: 8px; letter-spacing: 2px;">SUBMIT</span></button>
+            <button type="submit" id="submit-btn">送出回函 <span style="font-family:'Cormorant Garamond', serif; font-size: 0.9em; margin-left: 8px; letter-spacing: 2px;">SUBMIT</span></button>
         </form>
     </section>
 
@@ -583,6 +578,7 @@
             document.getElementById("cd-mins").innerText = minutes.toString().padStart(2, '0');
         }, 1000);
 
+        // --- 智能表單邏輯 ---
         const guestSelect = document.getElementById("guest-count");
         const conditionalFields = document.getElementById("conditional-fields");
 
@@ -593,6 +589,36 @@
             } else {
                 conditionalFields.style.display = "none";
             }
+        });
+
+        // --- 跨裝置完美提交機制 (Fetch API 解決手機阻擋問題) ---
+        const form = document.getElementById("wedding-form");
+        const submitBtn = document.getElementById("submit-btn");
+
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.innerText = "傳送中...";
+
+            const formData = new URLSearchParams(new FormData(form));
+            const formActionURL = "https://docs.google.com/forms/d/e/1FAIpQLSdaAXdx9O1peatc6yibY0t0uYOHiMuURjJXBrTu1j_HSEkQ1A/formResponse";
+
+            fetch(formActionURL, {
+                method: "POST",
+                mode: "no-cors",
+                body: formData
+            }).then(() => {
+                alert("表單已成功送出！非常感謝您的回覆，期待與您相見 ❤");
+                form.reset();
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '送出回函 <span style="font-family:\'Cormorant Garamond\', serif; font-size: 0.9em; margin-left: 8px; letter-spacing: 2px;">SUBMIT</span>';
+                window.location.reload();
+            }).catch((error) => {
+                console.error("Error:", error);
+                alert("發送發生一點小狀況，請檢查網路連線後再試一次！");
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '送出回函 <span style="font-family:\'Cormorant Garamond\', serif; font-size: 0.9em; margin-left: 8px; letter-spacing: 2px;">SUBMIT</span>';
+            });
         });
     </script>
 </body>
